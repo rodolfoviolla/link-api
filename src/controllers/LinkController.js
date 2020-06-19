@@ -4,7 +4,7 @@ const Link = mongoose.model('Link')
 module.exports = {
   async index(req, res) {
     const { page = 1 } = req.query
-    const links = await Link.paginate({}, { page, limit: 10 })
+    const links = await Link.paginate({}, { page, limit: process.env.PAGINATE || 10 })
 
     return res.json(links)
   },
